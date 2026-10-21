@@ -1,0 +1,6 @@
+[submodule "skills/opus-video-skills"]
+	path = skills/opus-video-skills
+	url = https://github.com/tuzhechen2005/opus-video-skills
+[submodule "skills/remotion-skills"]
+	path = skills/remotion-skills
+	url = https://github.com/remotion-dev/skills

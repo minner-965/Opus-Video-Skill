@@ -424,7 +424,7 @@ print("→", out)
 **类型二 · 角色故事**
 - 输入:Simon 给歌,可以只给副歌。选段在小节线上切,头尾淡入淡出;片长跟着歌走,不在半句截断。
 - 画面:Claude 自编一句话的故事和贯穿道具,每句歌词配一个小剧情;底部卡拉 OK 歌词条。先出分镜表和一张概念图,🛑 Simon 确认后再做。
-- 引擎规则以 `vendor/opus-video-skills/skills/painted-animation/` 的 `ANIMATION_GUIDE.md` 为准(每帧是 t 的纯函数、boilSeed、glow、关键动作在歌词条上方)。渲染约 1 秒/帧,用 `--frames --workers=4`。
+- 引擎规则以 `skills/opus-video-skills/skills/painted-animation/template/ANIMATION_GUIDE.md`(本仓库子模块;本地旧工程放在 `vendor/opus-video-skills`) 为准(每帧是 t 的纯函数、boilSeed、glow、关键动作在歌词条上方)。渲染约 1 秒/帧,用 `--frames --workers=4`。
 
 **类型三 · 知识大赏**:见第十一节。资料先上网查、逐条标出处,数字能算就自己算,片尾必须有声明和参考文献。
 

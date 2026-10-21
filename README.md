@@ -12,6 +12,38 @@
 
 知识大赏没有旁白,靠字幕和连续变形的动画讲透一个知识点。资料要上网查证,每条都标出处,片尾附参考文献。
 
+## 用到的 skill(已作为子模块放在 `skills/`)
+
+| skill | 来源 | 用在 | 许可 |
+|---|---|---|---|
+| **remotion-best-practices** 等 12 个 Remotion 官方 skill | https://github.com/remotion-dev/skills → `skills/remotion-skills/` | 动态排版歌词、知识大赏 | 见该仓库 |
+| **painted-animation**(手绘水彩角色动画) | https://github.com/tuzhechen2005/opus-video-skills → `skills/opus-video-skills/skills/painted-animation/` | 角色故事 | MIT |
+| **kinetic-reel**(电影感数据叙事) | 同上 → `skills/opus-video-skills/skills/kinetic-reel/` | 备选引擎 | MIT |
+
+克隆时连子模块一起拉下来:
+
+```bash
+git clone --recursive https://github.com/minner-965/Opus-Video-Skill
+# 已经克隆过但没带子模块:
+git submodule update --init --recursive
+```
+
+装进 Claude Code(任选一种):
+
+```bash
+# A. Remotion 官方 skill:按 skills-lock.json 装到当前项目的 .claude/skills/
+npx skills add remotion-dev/skills -a claude-code -y
+
+# B. opus-video-skills:在 Claude Code 里
+/plugin marketplace add tuzhechen2005/opus-video-skills
+/plugin install painted-animation@opus-video-skills
+/plugin install kinetic-reel@opus-video-skills
+
+# C. 不装插件也行:直接读子模块里的 SKILL.md(本流水线就是这么用的)
+```
+
+角色故事样片 `examples/glass-painted/` 的场景文件,要放进 `skills/opus-video-skills/skills/painted-animation/template/` 复制出来的工程里运行(把 `src/scenes/bl_*.js` 加进 `studio.html`)。
+
 ## 怎么用
 
 1. 准备环境(Windows / macOS / Linux 都行):
@@ -22,8 +54,7 @@
      .venv/Scripts/python -m pip install numpy librosa pillow stable-ts   # macOS/Linux: .venv/bin/python
      .venv/Scripts/python -m pip install demucs                          # 可选,分离人声
      ```
-   - Remotion 官方 skill:`npx skills add remotion-dev/skills -a claude-code -y`
-   - 角色故事引擎:`git clone https://github.com/tuzhechen2005/opus-video-skills vendor/opus-video-skills`
+   - skill:见上一节(`git clone --recursive` 已经带上)
 2. 在这个目录启动 Claude Code,对它说:
    > 读 PLAN.md。先确认环境,再填好任务单,然后从阶段 0 开始,每个 🛑 检查点停下来等我确认。
 3. 给它一首歌(放进 `music/song.mp3`),或者一个题目。它会依次产出:
@@ -53,6 +84,8 @@ PLAN.md 第七节阶段 6 有混音命令:用 `loudnorm` 把响度调到 -14 LUF
 ```
 PLAN.md                  规则和流程(先读这个)
 SKILL.md                 作为 Claude Code skill 使用时的入口
+skills/                  用到的 skill(git 子模块):remotion-skills、opus-video-skills
+skills-lock.json         Remotion skill 的安装锁定文件
 tools/                   分析参考视频、节拍网格、歌词对齐、审片拼图、配乐合成
 remotion/                Remotion 工程(知识大赏两支样片)
 examples/
