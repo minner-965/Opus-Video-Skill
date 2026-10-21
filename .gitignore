@@ -1,0 +1,14 @@
+node_modules/
+.venv/
+__pycache__/
+out/
+*.mp4
+*.mov
+*.wav
+*.m4a
+*.mp3
+remotion/public/*
+!remotion/public/.gitkeep
+ref/
+music/
+stems/
